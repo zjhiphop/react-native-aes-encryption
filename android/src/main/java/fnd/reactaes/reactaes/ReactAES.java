@@ -1,77 +1,54 @@
 package fnd.reactaes.reactaes;
+
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.bridge.WritableNativeMap;
 import com.facebook.react.bridge.ReactMethod;
+
+import android.util.Base64;
+import android.util.Log;
+
 import java.lang.String;
+import java.math.BigInteger;
 
 /**
  * Created by daiyungui on 16/6/19.
  */
-public class ReactAES  extends ReactContextBaseJavaModule{
-    public ReactAES(ReactApplicationContext reactContext){
+public class ReactAES extends ReactContextBaseJavaModule {
+    public ReactAES(ReactApplicationContext reactContext) {
         super(reactContext);
     }
 
     @Override
-    public String getName(){
+    public String getName() {
         return "ReactAES";
     }
 
+
     @ReactMethod
-    public void md5(final String inputString,Promise promise) {
+    public void encrypt(final String plainText, final String key, Promise promise) {
         try {
-            String md5Text = CryptLib.md5(inputString);
-            promise.resolve(md5Text);
+            byte[] all = Aes.encrypt(plainText, key); //encrypt
+
+            promise.resolve(Base64.encodeToString(all, Base64.DEFAULT));
         } catch (Exception e) {
-            promise.reject("-1","md5 failed");
+            promise.reject("-1", e);
         }
     }
 
     @ReactMethod
-    public void encrypt(final String plainText, final String key,final String iv, Promise promise){
+    public void decrypt(final String encryptedText, final String key, final String iv, Promise promise) {
         try {
-            CryptLib _crypt = new CryptLib();
-            String encrytedText = _crypt.encrypt(plainText, key, iv); //encrypt
-            promise.resolve(encrytedText);
-        } catch (Exception e) {
-            promise.reject("-1","encrypt failed");
-        }
-    }
-
-    @ReactMethod
-    public void decrypt(final String encryptedText, final String key, final String iv, Promise promise){
-        try {
-            CryptLib _crypt = new CryptLib();
-            String plainText = _crypt.decrypt(encryptedText, key,iv); //decrypt
+            String plainText =  Aes.decrypt(Base64.decode(encryptedText, Base64.DEFAULT),key,Base64.decode(iv, Base64.DEFAULT));
             promise.resolve(plainText);
         } catch (Exception e) {
-            promise.reject("-1","decrypt failed");
-        }
-
-    }
-
-    @ReactMethod
-    public void generateRandomIV(Integer length, Promise promise){
-        try {
-            String iv = CryptLib.generateRandomIV(length);
-            promise.resolve(iv);
-        } catch (Exception e) {
-            promise.reject("-1","gen iv failed");
-        }
-
-    }
-
-    @ReactMethod
-    public void sha256(final String key,Integer length,Promise promise ){
-        try {
-            String returnKey = CryptLib.SHA256(key, length);
-            promise.resolve(returnKey);
-
-        } catch (Exception e) {
-            promise.reject("-1","sha256 failed");
+            promise.reject("-1", e);
         }
     }
+
 }
+
