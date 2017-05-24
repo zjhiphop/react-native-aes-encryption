@@ -10,7 +10,7 @@
 
 #import "NSData+Base64.h"
 #import "NSString+Base64.h"
-#import "NSData+Base64.m"
+#import "NSData+Base64.h"
 #import "NSData+AES.h"
 
 
