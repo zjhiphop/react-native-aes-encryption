@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D717EA21D16140A001A8DC2 /* CryptLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D717E9F1D16140A001A8DC2 /* CryptLib.m */; };
+		0E3569FC1F8E8F420045552C /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3569F61F8E8F420045552C /* NSString+Base64.m */; };
+		0E3569FD1F8E8F420045552C /* NSData+AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3569F71F8E8F420045552C /* NSData+AES.m */; };
+		0E3569FE1F8E8F420045552C /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E3569F81F8E8F420045552C /* NSData+CommonCrypto.m */; };
 		5D717EA31D16140A001A8DC2 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D717EA11D16140A001A8DC2 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5DFB84BA1D16024000338E67 /* ReactAES.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5DFB84B91D16024000338E67 /* ReactAES.h */; };
 		5DFB84BC1D16024000338E67 /* ReactAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DFB84BB1D16024000338E67 /* ReactAES.m */; };
@@ -27,8 +29,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5D717E9E1D16140A001A8DC2 /* CryptLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptLib.h; sourceTree = "<group>"; };
-		5D717E9F1D16140A001A8DC2 /* CryptLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CryptLib.m; sourceTree = "<group>"; };
+		0E3569F61F8E8F420045552C /* NSString+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
+		0E3569F71F8E8F420045552C /* NSData+AES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES.m"; sourceTree = "<group>"; };
+		0E3569F81F8E8F420045552C /* NSData+CommonCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CommonCrypto.m"; sourceTree = "<group>"; };
+		0E3569F91F8E8F420045552C /* NSData+AES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AES.h"; sourceTree = "<group>"; };
+		0E3569FA1F8E8F420045552C /* NSData+CommonCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CommonCrypto.h"; sourceTree = "<group>"; };
+		0E3569FB1F8E8F420045552C /* NSString+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base64.h"; sourceTree = "<group>"; };
 		5D717EA01D16140A001A8DC2 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		5D717EA11D16140A001A8DC2 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		5DFB84B61D16024000338E67 /* libReactAES.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libReactAES.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,8 +72,12 @@
 		5DFB84B81D16024000338E67 /* ReactAES */ = {
 			isa = PBXGroup;
 			children = (
-				5D717E9E1D16140A001A8DC2 /* CryptLib.h */,
-				5D717E9F1D16140A001A8DC2 /* CryptLib.m */,
+				0E3569F91F8E8F420045552C /* NSData+AES.h */,
+				0E3569F71F8E8F420045552C /* NSData+AES.m */,
+				0E3569FA1F8E8F420045552C /* NSData+CommonCrypto.h */,
+				0E3569F81F8E8F420045552C /* NSData+CommonCrypto.m */,
+				0E3569FB1F8E8F420045552C /* NSString+Base64.h */,
+				0E3569F61F8E8F420045552C /* NSString+Base64.m */,
 				5D717EA01D16140A001A8DC2 /* NSData+Base64.h */,
 				5D717EA11D16140A001A8DC2 /* NSData+Base64.m */,
 				5DFB84B91D16024000338E67 /* ReactAES.h */,
@@ -133,7 +143,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D717EA21D16140A001A8DC2 /* CryptLib.m in Sources */,
+				0E3569FD1F8E8F420045552C /* NSData+AES.m in Sources */,
+				0E3569FC1F8E8F420045552C /* NSString+Base64.m in Sources */,
+				0E3569FE1F8E8F420045552C /* NSData+CommonCrypto.m in Sources */,
 				5DFB84BC1D16024000338E67 /* ReactAES.m in Sources */,
 				5D717EA31D16140A001A8DC2 /* NSData+Base64.m in Sources */,
 			);
