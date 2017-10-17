@@ -21,6 +21,7 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
+
 public class Aes {
 
     public static class EncInfo {
@@ -36,7 +37,15 @@ public class Aes {
 
     public static byte[] encrypt(String message, String keyHex) throws IllegalBlockSizeException, BadPaddingException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, UnsupportedEncodingException {
         Random rnd = new Random(232354236);
-        byte[] key_raw = new BigInteger(keyHex, 16).toByteArray();
+        byte[] key_raw1 = new BigInteger(keyHex, 16).toByteArray();
+        byte[] key_raw = new byte[16];
+       if( key_raw1.length > 16){
+           System.arraycopy(key_raw1,1,key_raw,0,16);
+       }else{
+
+           System.arraycopy(key_raw1,0,key_raw,0,16);
+       }
+
         SecretKeySpec skeySpec = new SecretKeySpec(key_raw, "AES");
         byte[] IV = new byte[128 / 8];
         rnd.nextBytes(IV);
@@ -50,6 +59,7 @@ public class Aes {
         System.arraycopy(cipherBytes, 0, all, IV.length, cipherBytes.length);
 
         return all;
+
     }
 
 
@@ -63,8 +73,13 @@ public class Aes {
     }
 
     public static String decrypt(byte[] data, String keyHex,byte[] IV) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
-
-        byte[] key_raw = new BigInteger(keyHex, 16).toByteArray();
+        byte[] key_raw1 = new BigInteger(keyHex, 16).toByteArray();
+        byte[] key_raw = new byte[16];
+        if( key_raw1.length > 16){
+            System.arraycopy(key_raw1,1,key_raw,0,16);
+        }else{
+            System.arraycopy(key_raw1,0,key_raw,0,16);
+        }
         IvParameterSpec IVSpec = new IvParameterSpec(IV);
         SecretKeySpec skeySpec = new SecretKeySpec(key_raw, "AES");
         Cipher aESCipher = Cipher.getInstance("AES/CFB/NoPadding");
@@ -82,6 +97,7 @@ public class Aes {
         return null;
 
     }
+
 
 
     public interface Constants {
