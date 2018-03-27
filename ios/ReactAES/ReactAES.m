@@ -48,7 +48,7 @@ RCT_EXPORT_METHOD(decrypt:(NSString *)message key:(NSString *)key iv:(NSString *
     NSData *iv2 = [NSData base64DataFromString:iv];
 
     EncInfo *encInfo = [data AES128DecryptedDataWithKey:key iv:[iv2 getHexadecimalString]];
-    NSString * decryptedText = [[NSString alloc] initWithData:encInfo.cipherBytes encoding:NSASCIIStringEncoding];
+    NSString * decryptedText = [[NSString alloc] initWithData:encInfo.cipherBytes encoding:NSUTF8StringEncoding];
     if(decryptedText){
         resolve(decryptedText);
     }else{
