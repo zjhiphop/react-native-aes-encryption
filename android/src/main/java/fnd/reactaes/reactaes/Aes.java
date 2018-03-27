@@ -89,7 +89,7 @@ public class Aes {
 
 
         try {
-            return new String(nonEncBytes, "ASCII");
+            return new String(nonEncBytes, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
