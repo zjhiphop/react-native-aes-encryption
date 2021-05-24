@@ -1,6 +1,6 @@
 {
   "name": "react-native-aes-encryption",
-  "version": "0.2.1,
+  "version": "0.2.1",
   "description": "Cross platform AES encryption lib for React Native",
   "main": "index.js",
   "scripts": {
